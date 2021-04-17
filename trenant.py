@@ -63,3 +63,22 @@ def counter(arr):
     else:
         return 1 + counter(arr[1:])
 # O(N)
+
+def quick_sort(arr):
+    if (len(arr) < 2):
+        return arr
+    else:
+        pivot = arr[0]
+        less = [i for i in arr[1:] if pivot <= i] # 
+        greater = [i for i in arr[1:] if pivot > i]
+        s = quick_sort(greater) 
+        x = [pivot]
+        y = quick_sort(less)
+    return s + x + y
+# O(NlogN) -> O(n^2)
+
+# 2 7 4  -0-  1
+#   7 4  -[]- 2
+#   []   -4-  7
+#
+#
