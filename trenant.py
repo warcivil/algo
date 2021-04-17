@@ -43,3 +43,23 @@ def selection_sort(arr):
         sort_mas.append(arr.pop(smalest))
     return sort_mas
 # O(N^2)
+
+def fact(number):
+    if(number == 0):
+        return 1
+    else:
+        return number * fact(number-1)
+# O(N)
+
+def sumarray(array, length):
+    if(length == 0): return array[length]
+    else:
+        return array[length] + sumarray(array, length-1)
+# O(N)
+
+def counter(arr):
+    if(arr == []):
+        return 0
+    else:
+        return 1 + counter(arr[1:])
+# O(N)
