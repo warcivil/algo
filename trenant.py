@@ -1,0 +1,45 @@
+def levenstains(words, words2, lena, lenb):  # 1
+    if(lena == 0 or lenb == 0):  # 2
+        return max(lena, lenb)  # 2
+    elif(words[lena-1] == words2[lenb-1]):  # 1
+        return levenstains(words, words2, lena-1, lenb-1)  # x
+    else:
+        return 1 + min(
+            levenstains(words, words2, lena, lenb-1),  # x
+            levenstains(words, words2, lena-1, lenb),  # x
+            levenstains(words, words2, lena-1, lenb-1),  # x
+        )
+#O(N*M) - difficult
+
+
+def binary_search(value, left, right, mas):
+    mid = (left + right)//2  # 2
+    while(left < right):
+        if(mas[mid] < value):  # [1, 2, 3]
+            left += mid+1  # []
+        elif(mas[mid] > value):
+            right -= mid-1
+        else:
+            return mid
+        mid = (left + right)//2
+    return None
+# O(log n)
+
+# smaless sort
+
+
+def find_small(arr):
+    smallest = arr[0]
+    smallest_index = 0
+    for i in arr:
+        if(i<smallest):
+            smallest = i
+            smallest_index =arr.index(i)
+    return smallest_index
+def selection_sort(arr):
+    sort_mas = []
+    while arr:
+        smalest = find_small(arr)
+        sort_mas.append(arr.pop(smalest))
+    return sort_mas
+# O(N^2)
