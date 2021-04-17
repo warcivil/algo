@@ -71,14 +71,16 @@ def quick_sort(arr):
         pivot = arr[0]
         less = [i for i in arr[1:] if pivot <= i] # 
         greater = [i for i in arr[1:] if pivot > i]
-        s = quick_sort(greater) 
-        x = [pivot]
-        y = quick_sort(less)
-    return s + x + y
-# O(NlogN) -> O(n^2)
+        return quick_sort(greater) + [pivot] + quick_sort(less)
+# O(NlogN) -> O(N^2)
 
-# 2 7 4  -0-  1
-#   7 4  -[]- 2
-#   []   -4-  7
-#
-#
+cache = {}
+from random import randint
+def tryCache(url):
+    global cache
+    if(cache.get(url)):
+        return cache[url]
+    else:
+        cache[url] = randint(1, 100)
+        return cache[url]
+# O(1)
