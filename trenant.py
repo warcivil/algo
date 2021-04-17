@@ -84,3 +84,32 @@ def tryCache(url):
         cache[url] = randint(1, 100)
         return cache[url]
 # O(1)
+
+from collections import deque
+def seller(person):
+    if(person[-1] == 'm'):
+        return True
+    return False
+def BFS():
+    graph = {}
+    graph["you"] = [ "alice", "bоb", "claire"]
+    graph["bоb"] = ["anuj", "peggy"]
+    graph["alice"] = ["peggy"]
+    graph["claire"] = ["thom", "jonny"] 
+    graph["anuj"] = []
+    graph["peggy"] = []
+    graph["thom"] = []
+    graph["jonny"] = []
+    search_deque = deque()
+    search_deque+=graph["you"]
+    search = []
+    while search_deque:
+        person = search_deque.popleft()
+        if(person not in search):
+            if(seller(person)):
+                print(person, 'seller')
+            else:
+                print(search_deque)
+                search_deque+=graph[person]
+                search.append(person)
+BFS()
